@@ -23,6 +23,13 @@
             margin-top: 30px;
             border: 3px solid white;
         }
+        .table-header{
+            background-color: #8d99ae; 
+        }
+        .th-dg{
+            padding: 15px;
+            border: 1px solid white;
+        }
     </style>
 </head>
 
@@ -50,14 +57,14 @@
                     </form>
                 </div>
                 <table class="center">
-                    <tr>
-                    <td>Category Name</td>
-                    <td>Action</td>
+                    <tr class="table-header">
+                    <td class="th-dg">Category Name</td>
+                    <td class="th-dg">Action</td>
                     </tr>
                     @foreach($data as $data)
-                    <tr>
-                        <td>{{$data -> category_name}}</td>
-                        <td>
+                    <tr class="table-data">
+                        <td class="th-dg">{{$data -> category_name}}</td>
+                        <td class="th-dg">
                             <a onclick="return confirm('Are you sure you want to delete this category?')" href="{{url('delete_category', $data -> id)}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
