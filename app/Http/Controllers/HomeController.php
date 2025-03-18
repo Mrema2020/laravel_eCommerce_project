@@ -24,4 +24,9 @@ class HomeController extends Controller
         $product = product::paginate(10);
         return view('home.userpage', compact('product'));
     }
+
+    public function product_details($id){
+        $product = product::find($id);
+        return view('home.product_details', compact('product'));
+    }
 }
