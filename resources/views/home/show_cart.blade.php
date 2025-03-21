@@ -31,7 +31,7 @@
            border: 1px solid grey;
         }
         .th_deg{
-           font-size: 20px; 
+           font-size: 20px;
            padding: 5px;
            background: saddlebrown;
         }
@@ -51,7 +51,12 @@
          <!-- header section strats -->
          @include('home.header')
          <!-- end header section -->
-      
+         @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                        {{session()->get('message')}}
+                    </div>
+                @endif     
 
       <div class="center">
         <table>
@@ -81,6 +86,11 @@
         </table>
         <div>
             <h1 class="total_deg">Total price : {{$total_price}} TZS</h1>
+        </div>
+        <div>
+         <h1 style="font-size: 25px; padding-bottom: 15px;">Proceed to order</h1>
+         <a href="{{url('cash_order')}}" class="btn btn-danger">Cash on delivery</a>
+         <a href="{{url('stripe', $total_price)}}" class="btn btn-danger">Pay using card</a>
         </div>
       </div>
       <div class="cpy_">
