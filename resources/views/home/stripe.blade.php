@@ -4,25 +4,38 @@
 
 <head>
 
+    <base href="/public">
+
     <title>Card payment</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
+    <!-- font awesome style -->
+    <link href="home/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="home/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="home/css/responsive.css" rel="stylesheet" />
+    <!-- Add this before closing </body> -->
 </head>
 
 <body>
 
-    
-
+<div class="hero_area">
+    <!-- header section strats -->
+    @include('home.header')
+    <!-- end header section -->
 <div class="container">
 
-    
 
-    <h1>Pay using your card</h1>
 
-    
+    <h1 style="font-size: 25px; text-align: center; padding-bottom: 20px;">Pay using your card</h1>
+
+
 
     <div class="row">
 
@@ -38,7 +51,7 @@
 
                 <div class="panel-body">
 
-    
+
 
                     @if (Session::has('success'))
 
@@ -52,27 +65,27 @@
 
                     @endif
 
-    
 
-                    <form 
 
-                            role="form" 
+                    <form
 
-                            action="{{ route('stripe.post') }}" 
+                            role="form"
 
-                            method="post" 
+                            action="{{ route('stripe.post', $totalPrice) }}"
+
+                            method="post"
 
                             class="require-validation"
 
                             data-cc-on-file="false"
 
-                            data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
+                            data-stripe-publishable-key="{{ env('STRIPE_SECRET') }}"
 
                             id="payment-form">
 
                         @csrf
 
-    
+
 
                         <div class='form-row row'>
 
@@ -86,7 +99,7 @@
 
                         </div>
 
-    
+
 
                         <div class='form-row row'>
 
@@ -102,7 +115,7 @@
 
                         </div>
 
-    
+
 
                         <div class='form-row row'>
 
@@ -138,7 +151,7 @@
 
                         </div>
 
-    
+
 
                         <div class='form-row row'>
 
@@ -152,7 +165,7 @@
 
                         </div>
 
-    
+
 
                         <div class="row">
 
@@ -164,39 +177,39 @@
 
                         </div>
 
-                            
+
 
                     </form>
 
                 </div>
 
-            </div>        
+            </div>
 
         </div>
 
     </div>
 
-        
+
 
 </div>
+</div>
 
-    
 
 </body>
 
-    
+
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-    
+
 
 <script type="text/javascript">
 
-  
+
 
 $(function() {
 
-  
+
 
     /*------------------------------------------
 
@@ -208,11 +221,11 @@ $(function() {
 
     --------------------------------------------*/
 
-    
+
 
     var $form = $(".require-validation");
 
-     
+
 
     $('form.require-validation').bind('submit', function(e) {
 
@@ -232,7 +245,7 @@ $(function() {
 
         $errorMessage.addClass('hide');
 
-    
+
 
         $('.has-error').removeClass('has-error');
 
@@ -252,7 +265,7 @@ $(function() {
 
         });
 
-     
+
 
         if (!$form.data('cc-on-file')) {
 
@@ -274,11 +287,11 @@ $(function() {
 
         }
 
-    
+
 
     });
 
-      
+
 
     /*------------------------------------------
 
@@ -308,7 +321,7 @@ $(function() {
 
             var token = response['id'];
 
-                 
+
 
             $form.find('input[type=text]').empty();
 
@@ -320,7 +333,7 @@ $(function() {
 
     }
 
-     
+
 
 });
 

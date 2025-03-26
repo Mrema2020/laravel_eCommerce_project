@@ -15,6 +15,7 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('admin.script')
-    <!-- End custom js for this page -->
+        <!-- End custom js for this page -->
+    </div>
   </body>
 </html>

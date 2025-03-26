@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Home</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
       <!-- font awesome style -->
@@ -33,11 +33,11 @@
       <!-- why section -->
       @include('home.why')
       <!-- end why section -->
-      
+
       <!-- arrival section -->
       @include('home.arrival')
       <!-- end arrival section -->
-      
+
       <!-- product section -->
       @include('home.product')
       <!-- end product section -->
@@ -53,9 +53,9 @@
       <!-- footer end -->
       <div class="cpy_">
          <p class="mx-auto">© 2025 All Rights Reserved By <a href="https://html.design/">Mtimkavu LTD</a><br>
-         
+
             Distributed By <a href="https://themewagon.com/" target="_blank">Elvis</a>
-         
+
          </p>
       </div>
       <!-- jQery -->

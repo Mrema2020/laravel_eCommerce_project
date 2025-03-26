@@ -11,7 +11,7 @@
                   <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
                </li>
                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></a>
+                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></span></a>
                   <ul class="dropdown-menu">
                      <li><a href="about.html">About</a></li>
                      <li><a href="testimonial.html">Testimonial</a></li>
@@ -34,23 +34,33 @@
                      <i class="fa fa-search" aria-hidden="true"></i>
                   </button>
                </form>
-               @if (Route::has('login'))
-               @auth
-               <li class="nav-item">
-               <x-app-layout>
-  
-               </x-app-layout>
-               </li>
-               
-               @else
-               <li class="nav-item">
-                  <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
-               </li>
-               <li class="nav-item">
-                  <a class="btn btn-success" href="{{ route('register') }}">Register</a>
-               </li>
-               @endif
-               @endauth
+                @if (Route::has('login'))
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-success" href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endauth
+                @endif
+
 
             </ul>
          </div>

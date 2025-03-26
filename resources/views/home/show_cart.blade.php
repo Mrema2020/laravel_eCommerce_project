@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Cart</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
       <!-- font awesome style -->
@@ -56,7 +56,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
                         {{session()->get('message')}}
                     </div>
-                @endif     
+                @endif
 
       <div class="center">
         <table>
@@ -76,7 +76,7 @@
             <th>{{$cart->quantity}}</th>
             <th>{{$cart->price}} TZS</th>
             <th><img class="img_deg" src="/product/{{$cart->image}}" alt=""></th>
-            <th><a class="btn btn-danger" style="margin:10px;" onclick="return confirm('Are you sure you wabt to remone {{$cart->product_title}} from cart?')" 
+            <th><a class="btn btn-danger" style="margin:10px;" onclick="return confirm('Are you sure you wabt to remone {{$cart->product_title}} from cart?')"
                   href="{{url('remove_cart', $cart->id)}}">Remove Product</a></th>
            </tr>
 
@@ -95,9 +95,9 @@
       </div>
       <div class="cpy_">
          <p class="mx-auto">© 2025 All Rights Reserved By <a href="https://html.design/">Mtimkavu LTD</a><br>
-         
+
             Distributed By <a href="https://themewagon.com/" target="_blank">Elvis</a>
-         
+
          </p>
       </div>
       <!-- jQery -->

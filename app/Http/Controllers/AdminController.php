@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,7 @@ class AdminController extends Controller
         $data->category_name=$request->category;
         $data->save();
         return redirect()->back()->with('message','Category added successfully');
-        
+
     }
 
     public function delete_category($id, Request $request){
@@ -86,8 +87,13 @@ class AdminController extends Controller
          }
 
         $product->save();
-    
+
         // return view('admin.show_product', compact('product'))->with('message', 'Product updated successfully');
         return redirect()->back()->with('message', 'Product updated successfully');
+     }
+
+     public  function  show_order(){
+        $orders = order::all();
+        return view('admin.show_order', compact('orders'));
      }
 }
